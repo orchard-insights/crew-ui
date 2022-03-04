@@ -1,6 +1,6 @@
 {
   "name": "@orchard-insights/crew-ui",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "UI for the Crew task processing tool.",
   "scripts": {
     "dev": "vite",

@@ -2,7 +2,7 @@
 
 This is a VueJS based UI for [Crew](https://github.com/orchard-insights/crew).
 
-![Crew UI Screenshot](./docs/screenshot.png)
+![Crew UI Screenshot](./docs/screenshot.jpg)
 
 ## Usage
 

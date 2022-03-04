@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const { program } = require('commander')
 const server = require('node-http-server')
 const open = require('open')
@@ -15,20 +16,6 @@ program.command('serve')
     process.env.VITE_CREW_API_BASE_URL = options.url || 'http://localhost:3000/'
     process.env.VITE_CREW_API_WS_URL = options.url || 'http://localhost:3000/'
     const port = parseInt(options.port)
-
-    // console.log('Starting server...')
-
-    // server.deploy(
-    //   {
-    //     port,
-    //     root:'./dist/'
-    //   },
-    //   (server) => {
-    //     if (options.browser) {
-    //       open(`http://localhost:${port}/`)
-    //     }
-    //   }
-    // )
 
     // We have to build the UI with vite so that env vars get injected into the code...
 

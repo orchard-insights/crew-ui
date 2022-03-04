@@ -3,6 +3,7 @@ const { program } = require('commander')
 const server = require('node-http-server')
 const open = require('open')
 const { build } = require('vite')
+const path = require('path')
 
 program
   .version('0.0.1')
@@ -19,6 +20,9 @@ program.command('serve')
 
     // We have to build the UI with vite so that env vars get injected into the code...
 
+    // Set parent dir to working dir so vite can find everything
+    process.chdir(path.resolve(__dirname, '../'))
+
     console.log('Building UI...')
     build().then(() => {
 
@@ -27,7 +31,7 @@ program.command('serve')
       server.deploy(
         {
           port,
-          root:'./dist/'
+          root: path.resolve(__dirname, '../dist')
         },
         (server) => {
           const url = `http://localhost:${port}/`

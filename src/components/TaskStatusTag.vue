@@ -10,8 +10,8 @@
       </span>
       <span v-else>
         <span v-if="task.errors && task.errors.length > 0">
-          <Tag v-if="task.remainingAttempts < 1" :value="task._id" severity="warning" icon="pi pi-exclamation-triangle"></Tag>
-          <Tag v-else :value="task._id" severity="danger" icon="pi pi-exclamation-triangle"></Tag>
+          <Tag v-if="task.remainingAttempts < 1" :value="task._id" severity="danger" icon="pi pi-exclamation-triangle"></Tag>
+          <Tag v-else :value="task._id" severity="warning" icon="pi pi-exclamation-triangle"></Tag>
         </span>
         <span v-else>
           <Tag :value="task._id" severity="info" icon="pi pi-clock"></Tag>

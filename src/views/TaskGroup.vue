@@ -32,6 +32,11 @@
           </span>
         </div>
 
+        <div v-if="group" class="mb-4">
+          <Checkbox v-model="showOnlyIncompleteTasks" :binary="true" />
+          <label> Hide Completed</label>
+        </div>
+
         <DataTable v-if="sortedTasks.length > 0" :value="sortedTasks" :paginator="true" :rows="taskRows" class="p-datatable-sm" responsiveLayout="scroll">
           <Column field="_id" header="Id">
             <template #body="slotProps">
@@ -398,13 +403,18 @@ export default {
       retryTaskWait: false,
       resetTaskWait: false,
       pluckTaskWait: false,
-      percentComplete: 0
+      percentComplete: 0,
+      showOnlyIncompleteTasks: false
     }
   },
   computed: {
     ...mapStores(useConfigStore),
     sortedTasks () {
-      return _.orderBy(_.values(this.tasks), ['priority', 'createdAt'], ['desc', 'asc'])
+      let tasks = _.values(this.tasks)
+      if (this.showOnlyIncompleteTasks) {
+        tasks = _.filter(tasks, (t) => { return !t.isComplete })
+      }
+      return _.orderBy(tasks, ['priority', 'createdAt'], ['desc', 'asc'])
     }
   },
   mounted () {

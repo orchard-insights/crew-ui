@@ -23,7 +23,8 @@ export default {
       showNavbar: false,
       items: [
         { label: "Task Groups", to: '/' },
-        { label: "Channels", to: '/channels' }
+        { label: "Channels", to: '/channels' },
+        { label: "Operators", to: '/operators' }
       ]
     }
   }

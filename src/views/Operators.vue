@@ -14,7 +14,6 @@
           </Column>
           <Column field="channel" header="Channel" />
           <Column field="url" header="Channel" />
-          <Column field="maxConcurrency" header="Max" />
           <Column field="isPaused" header="Paused">
             <template #body="slotProps">
               <span v-if="slotProps.data.isPaused">Yes</span>
@@ -45,10 +44,6 @@
             <div class="p-field mt-4">
               <label for="url">Url</label>
               <InputText autofocus :disabled="addWait" id="url" type="text" v-model="newUrl" />
-            </div>
-            <div class="p-field mt-4">
-              <label for="maxConcurrency">Max Concurrency</label>
-              <InputNumber :disabled="addWait" id="maxConcurrency" type="text" v-model="newMaxConcurrency" />
             </div>
 
             <div class="p-field mt-4">
@@ -108,10 +103,6 @@
           <div class="p-field">
             <label for="url">Url</label>
             <InputText autofocus :disabled="openOperatorReadonly || editOperatorWait" id="url" type="text" v-model="openOperator.url" />
-          </div>
-          <div class="p-field mt-4">
-            <label for="maxConcurrency">Max Concurrency</label>
-            <InputNumber :disabled="openOperatorReadonly || editOperatorWait" id="maxConcurrency" type="text" v-model="openOperator.maxConcurrency" />
           </div>
 
           <div class="p-field mt-4">
@@ -184,7 +175,6 @@ export default {
       newRequestConfig: {},
       actualNewRequestConfig: {},
       newRequestConfigInputError: '',
-      newMaxConcurrency: 5,
       newPaused: false,
       operatorToDelete: null,
       deleteOperatorError: '',
@@ -228,7 +218,6 @@ export default {
             channel: this.openOperator.channel,
             url: this.openOperator.url,
             requestConfig: JSON.parse(JSON.stringify(this.actualEditRequestConfig)),
-            maxConcurrency: this.openOperator.maxConcurrency,
             isPaused: this.openOperator.isPaused
           }
 
@@ -296,7 +285,6 @@ export default {
       this.newUrl = ''
       this.newRequestConfig = {}
       this.actualNewRequestConfig = {}
-      this.newMaxConcurrency = 5
       this.newPaused = false
     },
     async add () {
@@ -315,7 +303,6 @@ export default {
           channel: this.newChannel,
           url: this.newUrl,
           requestConfig: JSON.parse(JSON.stringify(this.actualNewRequestConfig)),
-          maxConcurrency: this.newMaxConcurrency,
           isPaused: this.newPaused
         })
         this.showAddDialog = false

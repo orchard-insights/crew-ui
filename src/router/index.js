@@ -18,6 +18,11 @@ const router = createRouter({
       path: '/task_group/:group_id',
       name: 'task_group',
       component: () => import('../views/TaskGroup.vue')
+    },
+    {
+      path: '/operators',
+      name: 'operators',
+      component: () => import('../views/Operators.vue')
     }
   ]
 })
